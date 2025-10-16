@@ -10,8 +10,9 @@ Sistema de pedidos online para George Burger, un negocio de hamburguesas que ofr
 
 ## ✨ Funcionalidades Implementadas
 - ✅ **Menú Digital Completo**: 5 categorías (hamburguesas, hotdogs, sincronizadas, tortas, burros)
-- ✅ **Selección de Ingredientes Extra**: Carne, quesos, tocino, camarón, etc. con precios individuales
-- ✅ **Verduras y Aderezos**: Preseleccionados por defecto (jitomate, cebolla, crema, etc.)
+- ✅ **Ingredientes Extra Opcionales**: Sistema colapsible - solo se muestran cuando el usuario quiere agregarlos
+- ✅ **Interfaz Simplificada**: Los extras aparecen en una sola lista organizada y opcional
+- ✅ **Verduras y Aderezos**: Preseleccionados por defecto en una sola sección (jitomate, cebolla, crema, etc.)
 - ✅ **Selección de Cantidades**: Para cada producto del menú
 - ✅ **Opciones de Entrega**: Domicilio (+$20) o Recoger en tienda
 - ✅ **Formulario de Cliente**: Nombre, WhatsApp, dirección (si es domicilio)
@@ -19,7 +20,7 @@ Sistema de pedidos online para George Burger, un negocio de hamburguesas que ofr
 - ✅ **Integración WhatsApp**: Envío automático de pedidos al número +523111235595
 - ✅ **Vista Previa del Mensaje**: Muestra el texto que se enviará por WhatsApp
 - ✅ **Bebidas**: Opción de agregar bebidas ($30 c/u)
-- ✅ **Carrito de Compras**: Manejo completo del pedido antes de enviar
+- ✅ **Carrito Inteligente**: Solo muestra extras cuando efectivamente se seleccionan
 - ✅ **Diseño Responsivo**: Funciona perfecto en celulares Android
 
 ## 🏗️ Arquitectura de Datos
@@ -46,12 +47,11 @@ Sistema de pedidos online para George Burger, un negocio de hamburguesas que ofr
 ## 📱 Guía de Uso
 1. **Seleccionar Categoría**: Toca las pestañas (Hamburguesas, Hotdogs, etc.)
 2. **Elegir Producto**: Ve los precios base y ingredientes incluidos  
-3. **Personalizar**: 
-   - Agregar ingredientes extra (con costo)
-   - Seleccionar verduras (incluidas, preseleccionadas)
-   - Elegir aderezos (incluidos, preseleccionados)
-   - Ajustar cantidad
-4. **Agregar al Carrito**: El producto se suma al pedido
+3. **Personalizar (Opcional)**: 
+   - **Ingredientes Extra**: Toca "🍖 Agregar Ingredientes Extra" si deseas agregar (carne, camarón, etc.)
+   - **Verduras y Aderezos**: Ya vienen seleccionados, puedes quitar los que no desees
+   - **Cantidad**: Ajustar con botones +/-
+4. **Agregar al Carrito**: El producto se suma al pedido (los extras se colapsan automáticamente)
 5. **Opciones de Entrega**: 
    - 🏃 Recoger en tienda (gratis)
    - 🏠 Entrega a domicilio (+$20)
@@ -79,7 +79,7 @@ Sistema de pedidos online para George Burger, un negocio de hamburguesas que ofr
 ## 🚀 Estado del Deployment
 - **Estado**: ✅ Activo y funcional
 - **Plataforma**: Sandbox de desarrollo
-- **Última Actualización**: 2025-09-19
+- **Última Actualización**: 2025-09-19 (Interfaz mejorada - extras opcionales y colapsibles)
 
 ## 📞 Configuración de WhatsApp
 - **Número de Destino**: +523111235595
