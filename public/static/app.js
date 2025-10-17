@@ -179,13 +179,17 @@ function renderMenu() {
 
 // Generate HTML for a menu item
 function generateMenuItemHTML(item) {
+  const formattedIngredients = item.base_ingredients.replace(/\+/g, ', ');
+  
   return `
     <div class="bg-gray-700 border border-gray-600 rounded-lg p-4 hover:bg-gray-600 transition">
       <div class="flex justify-between items-start mb-3">
-        <div class="flex-1">
+        <div class="flex-1 pr-3">
           <h3 class="font-bold text-lg text-white">${item.name}</h3>
-          <p class="text-sm text-gray-300 mb-2">${item.base_ingredients}</p>
-          <p class="font-bold text-orange-400 text-lg">$${item.base_price}</p>
+          <p class="text-sm text-gray-300 mb-2">${formattedIngredients}</p>
+        </div>
+        <div class="flex-shrink-0">
+          <p class="font-bold text-orange-400 text-xl">$${item.base_price}</p>
         </div>
       </div>
       
@@ -206,19 +210,19 @@ function generateMenuItemHTML(item) {
           </div>
         </div>
         
-        <!-- Vegetables and Sauces Combined -->
-        <div class="bg-green-700 p-3 rounded border border-green-600">
-          <h4 class="font-semibold text-sm mb-2 text-green-200">🥬 Verduras y Aderezos (Incluidos - puedes quitar los que no desees):</h4>
-          <div class="grid grid-cols-2 gap-2 text-sm">
+        <!-- Vegetables and Sauces Combined - Compact -->
+        <div class="bg-green-700 p-2 rounded border border-green-600">
+          <h4 class="font-semibold text-xs mb-1 text-green-200">🥬 Verduras y Aderezos (toca para quitar):</h4>
+          <div class="flex flex-wrap gap-1 text-xs">
             ${getExtrasForCategory('vegetable').map(veggie => `
-              <label class="flex items-center space-x-1 text-green-200">
-                <input type="checkbox" class="vegetable-checkbox accent-green-500" data-item-id="${item.id}" data-extra-id="${veggie.id}" checked>
+              <label class="inline-flex items-center space-x-1 text-green-200 bg-green-600 px-2 py-1 rounded">
+                <input type="checkbox" class="vegetable-checkbox accent-green-400 w-3 h-3" data-item-id="${item.id}" data-extra-id="${veggie.id}" checked>
                 <span>${veggie.name}</span>
               </label>
             `).join('')}
             ${getExtrasForCategory('sauce').map(sauce => `
-              <label class="flex items-center space-x-1 text-green-200">
-                <input type="checkbox" class="sauce-checkbox accent-green-500" data-item-id="${item.id}" data-extra-id="${sauce.id}" checked>
+              <label class="inline-flex items-center space-x-1 text-green-200 bg-green-600 px-2 py-1 rounded">
+                <input type="checkbox" class="sauce-checkbox accent-green-400 w-3 h-3" data-item-id="${item.id}" data-extra-id="${sauce.id}" checked>
                 <span>${sauce.name}</span>
               </label>
             `).join('')}
@@ -368,7 +372,7 @@ function updateCart() {
         <div class="flex justify-between items-start">
           <div class="flex-1">
             <h4 class="font-semibold text-white">${item.quantity}x ${item.menu_item.name}</h4>
-            <p class="text-sm text-gray-400">${item.menu_item.base_ingredients}</p>
+            <p class="text-sm text-gray-400">${item.menu_item.base_ingredients.replace(/\+/g, ', ')}</p>
             ${item.extras.length > 0 ? `<p class="text-xs text-orange-400 font-medium">+ Extras: ${item.extras.map(e => e.name).join(', ')}</p>` : ''}
             ${(item.vegetables.length > 0 || item.sauces.length > 0) ? `<p class="text-xs text-green-400">🥬 ${[...item.vegetables.map(v => v.name), ...item.sauces.map(s => s.name)].join(', ')}</p>` : ''}
           </div>

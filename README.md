@@ -9,14 +9,17 @@ Sistema de pedidos online para George Burger, un negocio de hamburguesas que ofr
 - **API Extras**: https://3000-itvd8mbiqgz2jbtsnyx6z-6532622b.e2b.dev/api/extras
 
 ## ✨ Funcionalidades Implementadas
-- ✅ **Menú Digital Completo**: 5 categorías (hamburguesas, hotdogs, sincronizadas, tortas, burros)
+- ✅ **Menú Digital Completo**: 6 categorías (hamburguesas, hotdogs, sincronizadas, tortas, burros, **papas**)
+- ✅ **Tema Oscuro Profesional**: Diseño moderno con colores negro/gris y acentos naranjas
+- ✅ **Búsqueda Rápida**: Cuadro de búsqueda inteligente para encontrar productos por nombre
 - ✅ **Ingredientes Extra Opcionales**: Sistema colapsible - solo se muestran cuando el usuario quiere agregarlos
 - ✅ **Interfaz Simplificada**: Los extras aparecen en una sola lista organizada y opcional
 - ✅ **Verduras y Aderezos**: Preseleccionados por defecto en una sola sección (jitomate, cebolla, crema, etc.)
+- ✅ **Papas Fritas**: Chicas ($45) y Grandes ($50) agregadas al menú
 - ✅ **Selección de Cantidades**: Para cada producto del menú
 - ✅ **Opciones de Entrega**: Domicilio (+$20) o Recoger en tienda
 - ✅ **Formulario de Cliente**: Nombre, WhatsApp, dirección (si es domicilio)
-- ✅ **Base de Datos**: Almacena clientes, pedidos y historial
+- ✅ **Base de Datos**: Almacena clientes, pedidos y historial (58 productos totales)
 - ✅ **Integración WhatsApp**: Envío automático de pedidos al número +523111235595
 - ✅ **Vista Previa del Mensaje**: Muestra el texto que se enviará por WhatsApp
 - ✅ **Bebidas**: Opción de agregar bebidas ($30 c/u)
@@ -38,6 +41,7 @@ Sistema de pedidos online para George Burger, un negocio de hamburguesas que ofr
 - **5 Sincronizadas**: Desde Sencilla ($51) hasta Matona/Costeña ($125)
 - **4 Tortas**: Desde Sencilla ($50) hasta Cubana ($101)
 - **4 Burros**: Desde Sencillo ($50) hasta Costeño ($106)
+- **2 Papas Fritas**: Chicas ($45) y Grandes ($50)
 
 ### Ingredientes Extra (13 tipos)
 - Carne ($34), Carnes Frías ($13), Q. Asadero ($13)
@@ -45,19 +49,20 @@ Sistema de pedidos online para George Burger, un negocio de hamburguesas que ofr
 - Y más con precios específicos
 
 ## 📱 Guía de Uso
-1. **Seleccionar Categoría**: Toca las pestañas (Hamburguesas, Hotdogs, etc.)
-2. **Elegir Producto**: Ve los precios base y ingredientes incluidos  
-3. **Personalizar (Opcional)**: 
+1. **Buscar Producto** (Opcional): Usa el cuadro de búsqueda 🔍 para encontrar rápido lo que buscas
+2. **Seleccionar Categoría**: Toca las pestañas (Hamburguesas, Hotdogs, Papas, etc.)
+3. **Elegir Producto**: Ve los precios base y ingredientes incluidos  
+4. **Personalizar (Opcional)**: 
    - **Ingredientes Extra**: Toca "🍖 Agregar Ingredientes Extra" si deseas agregar (carne, camarón, etc.)
    - **Verduras y Aderezos**: Ya vienen seleccionados, puedes quitar los que no desees
    - **Cantidad**: Ajustar con botones +/-
-4. **Agregar al Carrito**: El producto se suma al pedido (los extras se colapsan automáticamente)
-5. **Opciones de Entrega**: 
+5. **Agregar al Carrito**: El producto se suma al pedido (los extras se colapsan automáticamente)
+6. **Opciones de Entrega**: 
    - 🏃 Recoger en tienda (gratis)
    - 🏠 Entrega a domicilio (+$20)
-6. **Datos del Cliente**: Llenar nombre y WhatsApp (+ dirección si es domicilio)
-7. **Bebidas** (opcional): Agregar bebidas ($30 c/u)
-8. **Hacer Pedido**: Se genera el mensaje y se puede enviar por WhatsApp
+7. **Datos del Cliente**: Llenar nombre y WhatsApp (+ dirección si es domicilio)
+8. **Bebidas** (opcional): Agregar bebidas ($30 c/u)
+9. **Hacer Pedido**: Se genera el mensaje y se puede enviar por WhatsApp
 
 ## 📋 Funcionalidades Pendientes de Implementar
 - ⏳ **Gestión de Inventario**: Control de productos disponibles
@@ -79,7 +84,7 @@ Sistema de pedidos online para George Burger, un negocio de hamburguesas que ofr
 ## 🚀 Estado del Deployment
 - **Estado**: ✅ Activo y funcional
 - **Plataforma**: Sandbox de desarrollo
-- **Última Actualización**: 2025-09-19 (Interfaz mejorada - extras opcionales y colapsibles)
+- **Última Actualización**: 2025-10-16 (**GRAN ACTUALIZACIÓN**: Tema oscuro, búsqueda rápida y papas fritas)
 
 ## 📞 Configuración de WhatsApp
 - **Número de Destino**: +523111235595

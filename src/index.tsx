@@ -127,7 +127,7 @@ function generateWhatsAppMessage(order: Order, orderId: number): string {
   
   for (const item of order.items) {
     message += `\n${item.quantity}x *${item.menu_item.name}* - $${item.total_price}\n`
-    message += `   ${item.menu_item.base_ingredients}\n`
+    message += `   ${item.menu_item.base_ingredients.replace(/\+/g, ', ')}\n`
     
     if (item.extras.length > 0) {
       message += `   + Extra: ${item.extras.map(e => e.name).join(', ')}\n`
