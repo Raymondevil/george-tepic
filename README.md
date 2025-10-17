@@ -4,9 +4,10 @@
 Sistema de pedidos online para George Burger, un negocio de hamburguesas que ofrece hamburguesas, hotdogs, sincronizadas, tortas y burros. La aplicación permite a los clientes hacer pedidos desde su celular, gestiona una base de datos de clientes y envía los pedidos por WhatsApp.
 
 ## 🌐 URLs de Acceso
-- **Aplicación Web**: https://3000-itvd8mbiqgz2jbtsnyx6z-6532622b.e2b.dev
-- **API Menu**: https://3000-itvd8mbiqgz2jbtsnyx6z-6532622b.e2b.dev/api/menu
-- **API Extras**: https://3000-itvd8mbiqgz2jbtsnyx6z-6532622b.e2b.dev/api/extras
+- **🚀 PRODUCCIÓN**: https://george-burger.pages.dev
+- **API Menu**: https://george-burger.pages.dev/api/menu
+- **API Extras**: https://george-burger.pages.dev/api/extras
+- **Desarrollo**: https://3000-itvd8mbiqgz2jbtsnyx6z-6532622b.e2b.dev
 
 ## ✨ Funcionalidades Implementadas
 - ✅ **Menú Digital Completo**: 6 categorías (hamburguesas, hotdogs, sincronizadas, tortas, burros, **papas**)
@@ -82,9 +83,10 @@ Sistema de pedidos online para George Burger, un negocio de hamburguesas que ofr
 - **Package Manager**: npm
 
 ## 🚀 Estado del Deployment
-- **Estado**: ✅ Activo y funcional
-- **Plataforma**: Sandbox de desarrollo
-- **Última Actualización**: 2025-10-16 (**GRAN ACTUALIZACIÓN**: Tema oscuro, búsqueda rápida y papas fritas)
+- **Estado**: ✅ **ACTIVO EN PRODUCCIÓN**
+- **Plataforma**: Cloudflare Pages (https://george-burger.pages.dev)
+- **Base de Datos**: Cloudflare D1 (58 productos, 20 ingredientes)
+- **Última Actualización**: 2025-10-17 (**PUBLICADO**: Aplicación completa en Cloudflare Pages)
 
 ## 📞 Configuración de WhatsApp
 - **Número de Destino**: +523111235595
