@@ -23,7 +23,7 @@ Sistema de pedidos online para George Burger, un negocio de hamburguesas que ofr
 - ✅ **Base de Datos**: Almacena clientes, pedidos y historial (58 productos totales)
 - ✅ **Integración WhatsApp**: Envío automático de pedidos al número +523111235595
 - ✅ **Vista Previa del Mensaje**: Muestra el texto que se enviará por WhatsApp
-- ✅ **Bebidas**: Opción de agregar bebidas ($30 c/u)
+- ✅ **Aguas y Refrescos**: Opción de agregar aguas y refrescos ($30 c/u)
 - ✅ **Carrito Inteligente**: Solo muestra extras cuando efectivamente se seleccionan
 - ✅ **Diseño Responsivo**: Funciona perfecto en celulares Android
 
@@ -34,7 +34,7 @@ Sistema de pedidos online para George Burger, un negocio de hamburguesas que ofr
 - **menu_items**: Catálogo completo de productos (56 items)
 - **extra_ingredients**: Ingredientes adicionales con precios
 - **order_items**: Detalles de cada item en los pedidos
-- **beverages**: Registro de bebidas pedidas
+- **beverages**: Registro de aguas y refrescos pedidos
 
 ### Productos del Menú
 - **30 Hamburguesas**: Desde Sencilla ($50) hasta Super Costeña ($130)
@@ -62,7 +62,7 @@ Sistema de pedidos online para George Burger, un negocio de hamburguesas que ofr
    - 🏃 Recoger en tienda (gratis)
    - 🏠 Entrega a domicilio (+$20)
 7. **Datos del Cliente**: Llenar nombre y WhatsApp (+ dirección si es domicilio)
-8. **Bebidas** (opcional): Agregar bebidas ($30 c/u)
+8. **Aguas y Refrescos** (opcional): Agregar aguas y refrescos ($30 c/u)
 9. **Hacer Pedido**: Se genera el mensaje y se puede enviar por WhatsApp
 
 ## 📋 Funcionalidades Pendientes de Implementar

@@ -145,7 +145,7 @@ function generateWhatsAppMessage(order: Order, orderId: number): string {
   }
   
   if (order.beverages > 0) {
-    message += `\n${order.beverages}x *Bebida* - $${order.beverages * 30}\n`
+    message += `\n${order.beverages}x *Aguas y Refrescos* - $${order.beverages * 30}\n`
   }
   
   message += `\n💰 *Subtotal:* $${order.total_amount - order.delivery_cost}\n`
@@ -244,7 +244,7 @@ app.get('/', (c) => {
               {/* Beverages Section */}
               <div className="border-t pt-4 mb-4">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-semibold text-gray-300">🥤 Bebidas ($30 c/u)</span>
+                  <span className="font-semibold text-gray-300">🥤 Aguas y Refrescos ($30 c/u)</span>
                 </div>
                 <div className="flex items-center justify-center space-x-3">
                   <button id="beverage-decrease" className="bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-red-600">-</button>

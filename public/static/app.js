@@ -394,7 +394,7 @@ function updateCart() {
     html += `
       <div class="border-b border-gray-600 pb-3 mb-3">
         <div class="flex justify-between items-center">
-          <span class="font-semibold text-white">${beverageCount}x Bebida</span>
+          <span class="font-semibold text-white">${beverageCount}x Aguas y Refrescos</span>
           <span class="font-bold text-orange-400">$${beverageTotal}</span>
         </div>
       </div>
