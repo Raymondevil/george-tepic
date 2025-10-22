@@ -95,6 +95,11 @@ function setupEventListeners() {
   // Search functionality
   document.getElementById('search-input').addEventListener('input', handleSearch);
   document.getElementById('clear-search').addEventListener('click', clearSearch);
+  
+  // Floating cart click - scroll to cart section
+  document.getElementById('floating-cart').addEventListener('click', function() {
+    document.querySelector('#cart-items').parentElement.scrollIntoView({ behavior: 'smooth' });
+  });
 }
 
 // Handle search functionality
@@ -354,7 +359,40 @@ function addToCart(itemId) {
 function updateCart() {
   const cartContainer = document.getElementById('cart-items');
   const cartTotal = document.getElementById('cart-total');
+  const floatingCart = document.getElementById('floating-cart');
+  const cartCounter = document.getElementById('cart-counter');
+  const cartTotalIndicator = document.getElementById('cart-total-indicator');
   
+  // Calculate totals and item count
+  let subtotal = 0;
+  let totalItems = 0;
+  
+  // Count items and calculate subtotal
+  cart.forEach(item => {
+    subtotal += item.total_price;
+    totalItems += item.quantity;
+  });
+  
+  if (beverageCount > 0) {
+    subtotal += beverageCount * 30;
+    totalItems += beverageCount;
+  }
+  
+  // Calculate total with delivery
+  const deliveryType = document.querySelector('input[name="delivery"]:checked').value;
+  const deliveryCost = deliveryType === 'delivery' ? 20 : 0;
+  const total = subtotal + deliveryCost;
+  
+  // Update floating cart indicator
+  if (totalItems > 0) {
+    floatingCart.classList.remove('hidden');
+    cartCounter.textContent = totalItems;
+    cartTotalIndicator.textContent = `$${total}`;
+  } else {
+    floatingCart.classList.add('hidden');
+  }
+  
+  // Update main cart display
   if (cart.length === 0 && beverageCount === 0) {
     cartContainer.innerHTML = '<p class="text-gray-500 text-center py-4">Tu carrito está vacío</p>';
     cartTotal.textContent = '$0';
@@ -363,7 +401,6 @@ function updateCart() {
   }
   
   let html = '';
-  let subtotal = 0;
   
   // Cart items
   cart.forEach((item, index) => {
@@ -385,7 +422,6 @@ function updateCart() {
         </div>
       </div>
     `;
-    subtotal += item.total_price;
   });
   
   // Beverages
@@ -399,16 +435,9 @@ function updateCart() {
         </div>
       </div>
     `;
-    subtotal += beverageTotal;
   }
   
   cartContainer.innerHTML = html;
-  
-  // Calculate total with delivery
-  const deliveryType = document.querySelector('input[name="delivery"]:checked').value;
-  const deliveryCost = deliveryType === 'delivery' ? 20 : 0;
-  const total = subtotal + deliveryCost;
-  
   cartTotal.textContent = `$${total}`;
   
   // Enable order button if cart has items and form is valid
