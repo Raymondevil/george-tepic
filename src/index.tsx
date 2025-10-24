@@ -855,12 +855,12 @@ app.get('/', (c) => {
       </div>
 
       {/* Floating Cart Indicator */}
-      <div id="floating-cart" className="fixed top-4 right-4 bg-orange-600 text-white px-4 py-2 rounded-full shadow-lg z-50 cursor-pointer hover:bg-orange-700 transition-all transform hover:scale-105 hidden">
-        <div className="flex items-center space-x-2">
+      <div id="floating-cart" className="fixed top-4 right-4 bg-orange-600 text-white px-4 py-2 rounded-full shadow-2xl z-50 cursor-pointer hover:bg-orange-700 transition-all transform hover:scale-105" style={{display: 'none'}}>
+        <div className="flex items-center space-x-2 text-sm font-bold">
           <span>🛒</span>
-          <span id="cart-counter" className="font-bold">0</span>
-          <span className="text-sm">|</span>
-          <span id="cart-total-indicator" className="font-bold">$0</span>
+          <span id="cart-counter">0</span>
+          <span>|</span>
+          <span id="cart-total-indicator">$0</span>
         </div>
       </div>
 

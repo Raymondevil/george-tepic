@@ -97,9 +97,15 @@ function setupEventListeners() {
   document.getElementById('clear-search').addEventListener('click', clearSearch);
   
   // Floating cart click - scroll to cart section
-  document.getElementById('floating-cart').addEventListener('click', function() {
-    document.querySelector('#cart-items').parentElement.scrollIntoView({ behavior: 'smooth' });
-  });
+  const floatingCartElement = document.getElementById('floating-cart');
+  if (floatingCartElement) {
+    floatingCartElement.addEventListener('click', function() {
+      const cartSection = document.querySelector('#cart-items');
+      if (cartSection) {
+        cartSection.parentElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
 }
 
 // Handle search functionality
@@ -383,13 +389,19 @@ function updateCart() {
   const deliveryCost = deliveryType === 'delivery' ? 20 : 0;
   const total = subtotal + deliveryCost;
   
-  // Update floating cart indicator
-  if (totalItems > 0) {
-    floatingCart.classList.remove('hidden');
-    cartCounter.textContent = totalItems;
-    cartTotalIndicator.textContent = `$${total}`;
+  // Update floating cart indicator - check if elements exist
+  if (floatingCart && cartCounter && cartTotalIndicator) {
+    if (totalItems > 0) {
+      floatingCart.style.display = 'block';
+      cartCounter.textContent = totalItems;
+      cartTotalIndicator.textContent = `$${total}`;
+      console.log(`Floating cart updated: ${totalItems} items, $${total}`);
+    } else {
+      floatingCart.style.display = 'none';
+      console.log('Floating cart hidden - no items');
+    }
   } else {
-    floatingCart.classList.add('hidden');
+    console.log('Floating cart elements not found');
   }
   
   // Update main cart display
