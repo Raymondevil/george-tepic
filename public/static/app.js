@@ -9,10 +9,27 @@ let searchTerm = '';
 
 // Initialize app when DOM is loaded
 document.addEventListener('DOMContentLoaded', async function() {
+  console.log('🚀 DOM loaded, initializing app...');
   await loadData();
   setupEventListeners();
   renderMenu();
   updateCart();
+  
+  // Show floating cart immediately for testing
+  setTimeout(() => {
+    const floatingCart = document.getElementById('floating-cart');
+    if (floatingCart) {
+      console.log('✅ Found floating cart element');
+      // Test show/hide
+      floatingCart.style.display = 'block';
+      setTimeout(() => {
+        floatingCart.style.display = 'none';
+        console.log('🔄 Floating cart test complete');
+      }, 2000);
+    } else {
+      console.error('❌ Floating cart not found!');
+    }
+  }, 1000);
 });
 
 // Load menu and extras data
@@ -303,8 +320,13 @@ function updateItemPrice(itemId) {
 
 // Add item to cart
 function addToCart(itemId) {
+  console.log('addToCart called with itemId:', itemId);
   const item = menu.find(m => m.id == itemId);
-  if (!item) return;
+  if (!item) {
+    console.error('Item not found:', itemId);
+    return;
+  }
+  console.log('Found item:', item.name);
   
   const quantity = parseInt(document.getElementById(`quantity-${itemId}`).textContent);
   
@@ -344,6 +366,7 @@ function addToCart(itemId) {
   };
   
   cart.push(cartItem);
+  console.log('Added item to cart, total items now:', cart.length);
   updateCart();
   
   // Reset form
@@ -363,11 +386,10 @@ function addToCart(itemId) {
 
 // Update cart display
 function updateCart() {
+  console.log('📋 updateCart called, cart items:', cart.length, 'beverages:', beverageCount);
+  
   const cartContainer = document.getElementById('cart-items');
   const cartTotal = document.getElementById('cart-total');
-  const floatingCart = document.getElementById('floating-cart');
-  const cartCounter = document.getElementById('cart-counter');
-  const cartTotalIndicator = document.getElementById('cart-total-indicator');
   
   // Calculate totals and item count
   let subtotal = 0;
@@ -385,24 +407,14 @@ function updateCart() {
   }
   
   // Calculate total with delivery
-  const deliveryType = document.querySelector('input[name="delivery"]:checked').value;
-  const deliveryCost = deliveryType === 'delivery' ? 20 : 0;
+  const deliveryType = document.querySelector('input[name="delivery"]:checked');
+  const deliveryCost = deliveryType && deliveryType.value === 'delivery' ? 20 : 0;
   const total = subtotal + deliveryCost;
   
-  // Update floating cart indicator - check if elements exist
-  if (floatingCart && cartCounter && cartTotalIndicator) {
-    if (totalItems > 0) {
-      floatingCart.style.display = 'block';
-      cartCounter.textContent = totalItems;
-      cartTotalIndicator.textContent = `$${total}`;
-      console.log(`Floating cart updated: ${totalItems} items, $${total}`);
-    } else {
-      floatingCart.style.display = 'none';
-      console.log('Floating cart hidden - no items');
-    }
-  } else {
-    console.log('Floating cart elements not found');
-  }
+  console.log(`💰 Calculated: ${totalItems} items, $${total} total`);
+  
+  // Update floating cart indicator
+  updateFloatingCart(totalItems, total);
   
   // Update main cart display
   if (cart.length === 0 && beverageCount === 0) {
@@ -454,6 +466,30 @@ function updateCart() {
   
   // Enable order button if cart has items and form is valid
   validateForm();
+}
+
+// Update floating cart indicator
+function updateFloatingCart(totalItems, total) {
+  const floatingCart = document.getElementById('floating-cart');
+  const cartCounter = document.getElementById('cart-counter');
+  const cartTotalIndicator = document.getElementById('cart-total-indicator');
+  
+  console.log('🛒 updateFloatingCart:', totalItems, 'items, $' + total);
+  
+  if (!floatingCart || !cartCounter || !cartTotalIndicator) {
+    console.error('❌ Floating cart elements missing');
+    return;
+  }
+  
+  if (totalItems > 0) {
+    floatingCart.style.display = 'block';
+    cartCounter.textContent = totalItems;
+    cartTotalIndicator.textContent = `$${total}`;
+    console.log('✅ Floating cart shown');
+  } else {
+    floatingCart.style.display = 'none';
+    console.log('🔄 Floating cart hidden');
+  }
 }
 
 // Remove item from cart

@@ -855,13 +855,8 @@ app.get('/', (c) => {
       </div>
 
       {/* Floating Cart Indicator */}
-      <div id="floating-cart" className="fixed top-4 right-4 bg-orange-600 text-white px-4 py-2 rounded-full shadow-2xl z-50 cursor-pointer hover:bg-orange-700 transition-all transform hover:scale-105" style={{display: 'none'}}>
-        <div className="flex items-center space-x-2 text-sm font-bold">
-          <span>🛒</span>
-          <span id="cart-counter">0</span>
-          <span>|</span>
-          <span id="cart-total-indicator">$0</span>
-        </div>
+      <div id="floating-cart" style={{display: 'none', position: 'fixed', top: '16px', right: '16px', background: '#ea580c', color: 'white', padding: '12px 16px', borderRadius: '9999px', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)', zIndex: '50', cursor: 'pointer', fontSize: '14px', fontWeight: 'bold', transition: 'all 0.3s ease'}}>
+        🛒 <span id="cart-counter">0</span> | <span id="cart-total-indicator">$0</span>
       </div>
 
       <script src="/static/app.js"></script>
