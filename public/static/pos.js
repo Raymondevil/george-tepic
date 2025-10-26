@@ -15,49 +15,96 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 // Load menu and extras data
 async function loadPosData() {
-  try {
-    const [menuResponse, extrasResponse] = await Promise.all([
-      fetch('/api/menu'),
-      fetch('/api/extras')
-    ]);
+  // Define POS menu with your specific products and prices
+  posMenu = [
+    // Hamburguesas
+    { id: 1, name: 'H. Asadera', category: 'hamburguesas', price: 63, base_ingredients: 'Carne+Q.Asadero' },
+    { id: 2, name: 'H. Especial', category: 'hamburguesas', price: 63, base_ingredients: 'Carne+Carnes Frías' },
+    { id: 3, name: 'H. Doble', category: 'hamburguesas', price: 60, base_ingredients: 'Carne+Jamón+Q.Amarillo' },
+    { id: 4, name: 'H. Champiqueso', category: 'hamburguesas', price: 76, base_ingredients: 'Carne+Champiñón+Q.Asadero' },
+    { id: 5, name: 'H. Petra', category: 'hamburguesas', price: 78, base_ingredients: 'Carne+Q.Asadero+Tocino' },
+    { id: 6, name: 'H. Campechana', category: 'hamburguesas', price: 73, base_ingredients: 'Asadera+Jamón+Q.Amarillo' },
+    { id: 7, name: 'H. Ejecutiva', category: 'hamburguesas', price: 95, base_ingredients: 'Carne+Carnes Frías+Salchicha' },
+    { id: 8, name: 'H. Española', category: 'hamburguesas', price: 95, base_ingredients: 'Carne+Q.Asadero+Salchicha' },
+    { id: 9, name: 'H. Embajadora', category: 'hamburguesas', price: 108, base_ingredients: 'Carne+Carnes Frías+Q.Asadero+Salchicha' },
+    { id: 10, name: 'H. Americana', category: 'hamburguesas', price: 100, base_ingredients: 'Doble Carne+Doble Q.Amarillo' },
+    { id: 11, name: 'H. Choriqueso', category: 'hamburguesas', price: 45, base_ingredients: 'Chorizo+Q.Asadero' },
+    { id: 12, name: 'H. Ranchera', category: 'hamburguesas', price: 76, base_ingredients: 'Carne+Chorizo+Q.Asadero' },
+    { id: 13, name: 'H. Hawaiana', category: 'hamburguesas', price: 76, base_ingredients: 'Carne+Piña+Q.Asadero' },
+    { id: 14, name: 'H. Hawaiana Especial', category: 'hamburguesas', price: 89, base_ingredients: 'Carne+Piña+Q.Asadero+Carnes Frías' },
+    { id: 15, name: 'H. Especial Asadera', category: 'hamburguesas', price: 76, base_ingredients: 'Carne+Q.Asadero+Carnes Frías' },
+    { id: 16, name: 'H. Ahumada', category: 'hamburguesas', price: 50, base_ingredients: 'Chuleta' },
+    { id: 17, name: 'H. Ahumada Especial', category: 'hamburguesas', price: 63, base_ingredients: 'Chuleta+Carnes Frías' },
+    { id: 18, name: 'H. Mexicana', category: 'hamburguesas', price: 84, base_ingredients: 'Chuleta+Carne' },
+    { id: 19, name: 'H. Norteña', category: 'hamburguesas', price: 97, base_ingredients: 'Carne+Chuleta+Q.Asadero' },
+    { id: 20, name: 'H. Italiana', category: 'hamburguesas', price: 63, base_ingredients: 'Chuleta+Q.Asadero' },
+    { id: 21, name: 'H. Extravagante', category: 'hamburguesas', price: 110, base_ingredients: 'Carne+Chuleta+Q.Asadero+Carnes Frías' },
+    { id: 22, name: 'H. Descarnada', category: 'hamburguesas', price: 48, base_ingredients: 'Carnes Frías+Q.Amarillo' },
+    { id: 23, name: 'H. Descarnada Asadero', category: 'hamburguesas', price: 61, base_ingredients: 'Carnes Frías+Q.Amarillo+Q.Asadero' },
+    { id: 24, name: 'H. Sencilla', category: 'hamburguesas', price: 50, base_ingredients: 'Carne de Res' },
+    { id: 25, name: 'H. Big Sencilla', category: 'hamburguesas', price: 84, base_ingredients: '2 Carnes de Res' },
+    { id: 26, name: 'H. Costeña', category: 'hamburguesas', price: 96, base_ingredients: 'Camarón+Q.Asadero+Tocino+Ch.Morrón+Sal.Inglesa' },
+    { id: 27, name: 'H. Super Costeña', category: 'hamburguesas', price: 130, base_ingredients: 'Camarón+Q.Asadero+Carne de Res+Tocino+Ch.Morrón' },
+    { id: 28, name: 'H. La Popotiña', category: 'hamburguesas', price: 82, base_ingredients: 'Carne de Pierna+Tocino+Chile Morrón+Q.Asadero' },
+    { id: 29, name: 'H. Grosera', category: 'hamburguesas', price: 60, base_ingredients: 'Salchicha para Asar+Q.Asadero+Tocino' },
+    { id: 30, name: 'H. Super Grosera', category: 'hamburguesas', price: 94, base_ingredients: 'Salchicha para Asar+Q.Asadero+Tocino+Carne de Res' },
     
-    posMenu = await menuResponse.json();
-    posExtras = await extrasResponse.json();
+    // Hotdogs
+    { id: 31, name: 'D. Dogo de Pavo', category: 'hotdogs', price: 50, base_ingredients: 'Salchicha de Pavo' },
+    { id: 32, name: 'D. Grosero', category: 'hotdogs', price: 60, base_ingredients: 'Salchicha para Asar+Q.Asadero+Tocino Rebanado' },
+    { id: 33, name: 'D. Asadero', category: 'hotdogs', price: 63, base_ingredients: 'Salchicha+Q.Asadero' },
+    { id: 34, name: 'D. Big Grosero', category: 'hotdogs', price: 76, base_ingredients: 'Grosero+Carnes Frías' },
+    { id: 35, name: 'D. Choriqueso', category: 'hotdogs', price: 76, base_ingredients: 'Salchicha+Chorizo+Q.Asadero' },
+    { id: 36, name: 'D. Champiqueso', category: 'hotdogs', price: 73, base_ingredients: 'Salchicha+Champiñones+Q.Asadero' },
+    { id: 37, name: 'D. Campechano', category: 'hotdogs', price: 73, base_ingredients: 'Asadero+Jamón+Q.Amarillo' },
+    { id: 38, name: 'D. Especial', category: 'hotdogs', price: 63, base_ingredients: 'Salchicha+C.Frías' },
+    { id: 39, name: 'D. Hawaiano', category: 'hotdogs', price: 76, base_ingredients: 'Salchicha+Q.Asadero+Piña' },
+    { id: 40, name: 'D. Hawaiano Especial', category: 'hotdogs', price: 89, base_ingredients: 'Salchicha+Q.Asadero+Piña+C.Frías' },
+    { id: 41, name: 'D. Doble', category: 'hotdogs', price: 60, base_ingredients: 'Salchicha+Jamón+Q.Amarillo' },
+    { id: 42, name: 'D. Descarnado', category: 'hotdogs', price: 48, base_ingredients: 'Jamón+Pastel+Q.de Puerco+Mortadela+Salami' },
+    { id: 43, name: 'D. de Pierna', category: 'hotdogs', price: 48, base_ingredients: 'Salchicha de Pierna' },
     
-    // Add beverages as a special category
-    posMenu.push({
-      id: 999,
-      name: 'Agua de Jamaica',
-      category: 'bebidas',
-      price: 30,
-      base_ingredients: 'Bebida refrescante'
-    });
-    posMenu.push({
-      id: 998,
-      name: 'Agua de Horchata',
-      category: 'bebidas', 
-      price: 30,
-      base_ingredients: 'Bebida refrescante'
-    });
-    posMenu.push({
-      id: 997,
-      name: 'Coca-Cola',
-      category: 'bebidas',
-      price: 30,
-      base_ingredients: 'Refresco'
-    });
-    posMenu.push({
-      id: 996,
-      name: 'Sprite',
-      category: 'bebidas',
-      price: 30,
-      base_ingredients: 'Refresco'
-    });
+    // Sincronizadas
+    { id: 44, name: 'S. Sencilla', category: 'sincronizadas', price: 51, base_ingredients: 'T.Harina+Jamón+Q.Asadero+Q.Amarillo' },
+    { id: 45, name: 'S. Especial', category: 'sincronizadas', price: 81, base_ingredients: 'T.Harina+Jamón+Q.Asadero+Q.Amarillo+Pierna' },
+    { id: 46, name: 'S. Super', category: 'sincronizadas', price: 64, base_ingredients: 'T.Harina+Jamón+Q.Asadero+Q.Amarillo+Champiñones' },
+    { id: 47, name: 'S. Matona', category: 'sincronizadas', price: 125, base_ingredients: 'T.Harina+Jamón+Q.Asadero+Q.Amarillo+Pierna+Salchicha Grosera' },
+    { id: 48, name: 'S. Costeña', category: 'sincronizadas', price: 125, base_ingredients: 'T.Harina+Jamón+Q.Asadero+Q.Amarillo+Camarón+Pierna' },
     
-    console.log('POS Menu loaded:', posMenu.length, 'items');
-  } catch (error) {
-    console.error('Error loading POS data:', error);
-  }
+    // Tortas
+    { id: 49, name: 'T. Sencilla', category: 'tortas', price: 50, base_ingredients: 'Telera+Pierna' },
+    { id: 50, name: 'T. Especial', category: 'tortas', price: 63, base_ingredients: 'Carnes Frías+Pierna' },
+    { id: 51, name: 'T. Asadera', category: 'tortas', price: 63, base_ingredients: 'Pierna+Q.Asadero' },
+    { id: 52, name: 'T. Cubana', category: 'tortas', price: 101, base_ingredients: 'Jamón+Q.Asadero+Salchicha+Pierna' },
+    
+    // Burros
+    { id: 53, name: 'B. Sencillo', category: 'burros', price: 50, base_ingredients: 'Carne de Pierna' },
+    { id: 54, name: 'B. Asadero', category: 'burros', price: 63, base_ingredients: 'Carne de Pierna+Q.Asadero' },
+    { id: 55, name: 'B. Especial', category: 'burros', price: 63, base_ingredients: 'Carne de Pierna+Carnes Frías' },
+    { id: 56, name: 'B. Costeño', category: 'burros', price: 106, base_ingredients: 'Carne de Pierna+Camarón+Q.Asadero' },
+    
+    // Extras
+    { id: 101, name: 'Carne', category: 'extras', price: 34, base_ingredients: 'Carne adicional' },
+    { id: 102, name: 'Carnes Frías', category: 'extras', price: 13, base_ingredients: 'Carnes frías adicionales' },
+    { id: 103, name: 'Q. Asadero', category: 'extras', price: 13, base_ingredients: 'Queso asadero' },
+    { id: 104, name: 'Salchicha para Asar', category: 'extras', price: 44, base_ingredients: 'Salchicha para asar' },
+    { id: 105, name: 'Piña', category: 'extras', price: 13, base_ingredients: 'Piña natural' },
+    { id: 106, name: 'Champiñón', category: 'extras', price: 13, base_ingredients: 'Champiñones' },
+    { id: 107, name: 'Salchicha de Pavo', category: 'extras', price: 34, base_ingredients: 'Salchicha de pavo' },
+    { id: 108, name: 'Chuleta', category: 'extras', price: 34, base_ingredients: 'Chuleta' },
+    { id: 109, name: 'Camarón', category: 'extras', price: 46, base_ingredients: 'Camarón' },
+    { id: 110, name: 'Tocino', category: 'extras', price: 15, base_ingredients: 'Tocino' },
+    { id: 111, name: 'Carne de Pierna', category: 'extras', price: 34, base_ingredients: 'Carne de pierna' },
+    { id: 112, name: 'Chorizo', category: 'extras', price: 13, base_ingredients: 'Chorizo' },
+    { id: 113, name: 'Q. Amarillo', category: 'extras', price: 10, base_ingredients: 'Queso amarillo' },
+    
+    // Bebidas y Papas
+    { id: 201, name: 'Bebidas', category: 'bebidas', price: 30, base_ingredients: 'Aguas y refrescos' },
+    { id: 202, name: 'Papas Chicas', category: 'papas', price: 45, base_ingredients: 'Papas fritas chicas' },
+    { id: 203, name: 'Papas Grandes', category: 'papas', price: 50, base_ingredients: 'Papas fritas grandes' }
+  ];
+  
+  console.log('POS Menu loaded:', posMenu.length, 'items');
 }
 
 // Setup event listeners
@@ -174,8 +221,10 @@ function addToPosSale(itemId) {
 function updatePosSale() {
   const saleContainer = document.getElementById('pos-sale-items');
   const totalElement = document.getElementById('pos-total');
+  const itemCountElement = document.getElementById('pos-item-count');
   
   let total = 0;
+  let totalItems = 0;
   
   if (posSale.length === 0 && posBeverageCount === 0) {
     saleContainer.innerHTML = `
@@ -184,6 +233,7 @@ function updatePosSale() {
       </div>
     `;
     totalElement.textContent = '$0';
+    if (itemCountElement) itemCountElement.textContent = '0';
     return;
   }
   
@@ -192,6 +242,7 @@ function updatePosSale() {
   // Sale items
   posSale.forEach((item, index) => {
     total += item.total_price;
+    totalItems += item.quantity;
     
     html += `
       <div class="flex justify-between items-center bg-gray-700 p-2 rounded text-sm">
@@ -213,10 +264,12 @@ function updatePosSale() {
   if (posBeverageCount > 0) {
     const beverageTotal = posBeverageCount * 30;
     total += beverageTotal;
+    totalItems += posBeverageCount;
   }
   
   saleContainer.innerHTML = html;
   totalElement.textContent = `$${total}`;
+  if (itemCountElement) itemCountElement.textContent = totalItems;
 }
 
 // Remove item from POS sale
@@ -236,6 +289,10 @@ function clearPosSale() {
   posBeverageCount = 0;
   updatePosBeverageDisplay();
   updatePosSale();
+  
+  // Also update item count
+  const itemCountElement = document.getElementById('pos-item-count');
+  if (itemCountElement) itemCountElement.textContent = '0';
 }
 
 // Complete sale

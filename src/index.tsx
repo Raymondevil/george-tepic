@@ -627,6 +627,14 @@ app.get('/caja', (c) => {
                   </div>
                 </div>
                 
+                {/* Items Count */}
+                <div className="border-t border-gray-600 pt-3 mb-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-semibold text-gray-400">Items:</span>
+                    <span id="pos-item-count" className="text-lg font-bold text-orange-400">0</span>
+                  </div>
+                </div>
+                
                 {/* Total */}
                 <div className="border-t border-gray-600 pt-3 mb-4">
                   <div className="flex justify-between items-center">
