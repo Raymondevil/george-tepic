@@ -537,12 +537,12 @@ app.get('/admin/inventario', (c) => {
 // Página de caja de cobro
 app.get('/caja', (c) => {
   return c.render(
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+    <div className="min-h-screen bg-gradient-to-br from-red-900 via-red-800 to-red-700">
       {/* Header */}
-      <div className="bg-gray-800 shadow-2xl border-b border-green-500">
+      <div className="bg-red-800 shadow-2xl border-b border-yellow-500">
         <div className="container mx-auto px-4 py-6">
           <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-bold text-green-400">💰 CAJA DE COBRO</h1>
+            <h1 className="text-3xl font-bold text-yellow-400">💰 CAJA DE COBRO</h1>
             <div className="space-x-4">
               <a href="/" className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700">
                 🍔 Menú
@@ -561,13 +561,13 @@ app.get('/caja', (c) => {
           {/* Menu Grid - 3 columns */}
           <div className="xl:col-span-3">
             <div className="bg-gray-800 border border-gray-700 rounded-lg shadow-xl p-6">
-              <h2 className="text-2xl font-bold mb-6 text-center text-green-400">
+              <h2 className="text-2xl font-bold mb-6 text-center text-yellow-400">
                 📋 PRODUCTOS DISPONIBLES
               </h2>
               
               {/* Category Tabs */}
               <div className="flex flex-wrap justify-center mb-6 gap-2" id="pos-category-tabs">
-                <button className="pos-category-btn active bg-green-500 text-white px-3 py-2 rounded-lg font-semibold hover:bg-green-600 transition text-sm" data-category="hamburguesas">
+                <button className="pos-category-btn active bg-yellow-500 text-white px-3 py-2 rounded-lg font-semibold hover:bg-yellow-600 transition text-sm" data-category="hamburguesas">
                   🍔 Hamburguesas
                 </button>
                 <button className="pos-category-btn bg-gray-600 text-gray-300 px-3 py-2 rounded-lg font-semibold hover:bg-gray-500 transition text-sm" data-category="hotdogs">
@@ -605,7 +605,7 @@ app.get('/caja', (c) => {
               
               {/* Current Sale */}
               <div className="mb-6">
-                <h3 className="text-xl font-bold text-green-400 mb-4 text-center">🧾 Venta Actual</h3>
+                <h3 className="text-xl font-bold text-yellow-400 mb-4 text-center">🧾 Venta Actual</h3>
                 
                 {/* Sale Items */}
                 <div id="pos-sale-items" className="space-y-2 mb-4 max-h-60 overflow-y-auto">
@@ -631,7 +631,7 @@ app.get('/caja', (c) => {
                 <div className="border-t border-gray-600 pt-3 mb-2">
                   <div className="flex justify-between items-center">
                     <span className="text-sm font-semibold text-gray-400">Items:</span>
-                    <span id="pos-item-count" className="text-lg font-bold text-orange-400">0</span>
+                    <span id="pos-item-count" className="text-lg font-bold text-yellow-400">0</span>
                   </div>
                 </div>
                 
@@ -639,7 +639,7 @@ app.get('/caja', (c) => {
                 <div className="border-t border-gray-600 pt-3 mb-4">
                   <div className="flex justify-between items-center">
                     <span className="text-lg font-bold text-gray-300">TOTAL:</span>
-                    <span id="pos-total" className="text-2xl font-bold text-green-400">$0</span>
+                    <span id="pos-total" className="text-2xl font-bold text-yellow-400">$0</span>
                   </div>
                 </div>
                 
@@ -648,7 +648,7 @@ app.get('/caja', (c) => {
                   <button id="pos-clear-sale" className="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition font-semibold">
                     🗑️ Limpiar Venta
                   </button>
-                  <button id="pos-complete-sale" className="w-full bg-green-600 text-white py-3 px-4 rounded-lg hover:bg-green-700 transition font-bold text-lg">
+                  <button id="pos-complete-sale" className="w-full bg-yellow-600 text-white py-3 px-4 rounded-lg hover:bg-yellow-700 transition font-bold text-lg">
                     💵 Cobrar
                   </button>
                 </div>

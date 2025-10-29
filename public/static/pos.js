@@ -113,9 +113,9 @@ function setupPosEventListeners() {
   document.querySelectorAll('.pos-category-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.pos-category-btn').forEach(b => {
-        b.className = b.className.replace('bg-green-500 text-white', 'bg-gray-600 text-gray-300');
+        b.className = b.className.replace('bg-yellow-500 text-white', 'bg-gray-600 text-gray-300');
       });
-      this.className = this.className.replace('bg-gray-600 text-gray-300', 'bg-green-500 text-white');
+      this.className = this.className.replace('bg-gray-600 text-gray-300', 'bg-yellow-500 text-white');
       
       posCurrentCategory = this.dataset.category;
       renderPosMenu();
@@ -168,13 +168,19 @@ function renderPosMenu() {
   let html = '';
   
   categoryItems.forEach(item => {
+    // Determine background color based on category
+    let bgColor = 'bg-gray-700 hover:bg-gray-600';
+    if (item.category === 'hamburguesas') {
+      bgColor = 'bg-yellow-600 hover:bg-yellow-500'; // Yellow for hamburguesas
+    }
+    
     html += `
-      <div class="bg-gray-700 border border-gray-600 rounded-lg p-3 hover:bg-gray-600 cursor-pointer transition-colors"
+      <div class="${bgColor} border border-gray-600 rounded-lg p-3 cursor-pointer transition-colors"
            onclick="addToPosSale(${item.id})">
         <div class="text-center">
           <h3 class="font-bold text-white text-sm mb-1">${item.name}</h3>
-          <p class="text-xs text-gray-300 mb-2 h-8 overflow-hidden">${item.base_ingredients}</p>
-          <p class="font-bold text-green-400">$${item.price}</p>
+          <p class="text-xs text-gray-200 mb-2 h-8 overflow-hidden">${item.base_ingredients}</p>
+          <p class="font-bold text-yellow-400">$${item.price}</p>
         </div>
       </div>
     `;
@@ -251,7 +257,7 @@ function updatePosSale() {
           <div class="text-xs text-gray-300">${item.menu_item.base_ingredients}</div>
         </div>
         <div class="text-right ml-2">
-          <div class="font-bold text-green-400">$${item.total_price}</div>
+          <div class="font-bold text-yellow-400">$${item.total_price}</div>
           <button class="text-red-400 hover:text-red-300 text-xs" onclick="removeFromPosSale(${index})">
             🗑️
           </button>
