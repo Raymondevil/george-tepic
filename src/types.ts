@@ -39,6 +39,10 @@ export interface Order {
   total_amount: number;
 }
 
-export interface CloudflareBindings {
-  DB: D1Database;
-}
+// Tipo para la base de datos SQLite (usando better-sqlite3)
+// export interface Database {
+//   prepare(sql: string): Statement;
+// }
+
+// Tipos para el entorno - ya no depende de Cloudflare
+// El tipo Env ahora usará la conexión a BD directa en lugar de bindings

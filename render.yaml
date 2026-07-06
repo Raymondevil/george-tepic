@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: george-burger-api
+    runtime: node
+    buildCommand: npm install && npm run build:node
+    startCommand: npm run start
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: NODE_ENV
+        value: production
+      - key: DB_PATH
+        value: ./database.sqlite
+    autoDeploy: false
+    
+  - type: static
+    name: george-burger-frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    autoDeploy: false

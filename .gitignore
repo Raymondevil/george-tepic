@@ -30,6 +30,11 @@ logs/
 # Wrangler
 .wrangler/
 
+# SQLite Database
+*.sqlite
+*.db
+database.sqlite
+
 # TypeScript
 *.tsbuildinfo
 
