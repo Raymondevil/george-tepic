@@ -42,12 +42,7 @@ Esto creará el archivo `database.sqlite` con todos los datos iniciales.
 
 Si necesitas migrar los datos existentes desde Cloudflare D1:
 
-1. Exportar datos de D1:
-```bash
-# Ejecutar en tu entorno local con Cloudflare
-wrangler d1 execute george-burger-production --local --file=./export.sql
-```
-
+1. Exportar datos de D1 manualmente desde el panel de Cloudflare
 2. Crear un script de migración personalizado para importar los datos a SQLite.
 
 ### 3. Crear servicios en Render
