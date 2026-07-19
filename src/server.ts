@@ -1,15 +1,16 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
-import { serveStatic } from 'hono/node-server/serve-static'
+import { serveStatic } from '@hono/node-server/serve-static'
 import { renderer } from './renderer'
 import apiRouter from './routes/api'
 import viewsRouter from './routes/views'
 import { db } from './db'
+import type { Env } from './types'
 
 // Tipo de entorno para Node.js
 // Ya no necesitamos Cloudflare bindings, usamos la DB directamente
-const app = new Hono()
+const app = new Hono<Env>()
 
 // Middleware para agregar la conexión a BD a cada contexto
 app.use('*', async (c, next) => {

@@ -1,6 +1,7 @@
 import type { MiddlewareHandler } from 'hono'
+import type { Env } from '../types'
 
-export const checkAdminAuth: MiddlewareHandler = async (c, next) => {
+export const checkAdminAuth: MiddlewareHandler<Env> = async (c, next) => {
   const sessionToken = c.req.header('authorization')?.replace('Bearer ', '') || c.req.query('token')
   
   if (!sessionToken) {

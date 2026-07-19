@@ -44,5 +44,10 @@ export interface Order {
 //   prepare(sql: string): Statement;
 // }
 
-// Tipos para el entorno - ya no depende de Cloudflare
-// El tipo Env ahora usará la conexión a BD directa en lugar de bindings
+import type { Database } from 'better-sqlite3'
+
+export type Env = {
+  Variables: {
+    db: Database
+  }
+}

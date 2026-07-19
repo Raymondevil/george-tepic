@@ -1,6 +1,7 @@
 import { Hono } from 'hono'
+import type { Env } from '../../types'
 
-const menuApi = new Hono()
+const menuApi = new Hono<Env>()
 
 menuApi.get('/menu', async (c) => {
   const db = c.get('db')

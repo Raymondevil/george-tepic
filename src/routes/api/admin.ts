@@ -1,7 +1,8 @@
 import { Hono } from 'hono'
 import { checkAdminAuth } from '../../middleware/auth'
+import type { Env } from '../../types'
 
-const adminApi = new Hono()
+const adminApi = new Hono<Env>()
 
 // Login administrativo
 adminApi.post('/login', async (c) => {
