@@ -7,9 +7,9 @@ const adminApi = new Hono<Env>()
 // Login administrativo
 adminApi.post('/login', async (c) => {
   const { password } = await c.req.json()
+  const adminPassword = process.env.ADMIN_PASSWORD || 'george2024'
   
-  // Contraseña simple (en producción usar hash)
-  if (password !== 'george2024') {
+  if (password !== adminPassword) {
     return c.json({ success: false, error: 'Contraseña incorrecta' }, 401)
   }
   
@@ -50,7 +50,7 @@ adminApi.get('/inventory/:id', checkAdminAuth, async (c) => {
   const db = c.get('db')
   const id = c.req.param('id')
   
-  const result = db.prepare(`SELECT * FROM inventory WHERE id = ?`).bind(id).first()
+  const result = db.prepare(`SELECT * FROM inventory WHERE id = ?`).bind(id).get() as { id: number; name: string; quantity_sent: number; quantity_remaining: number; total_stock: number; category: string; unit: string } | undefined
   
   if (!result) {
     return c.json({ success: false, error: 'Producto no encontrado' }, 404)
@@ -89,7 +89,7 @@ adminApi.get('/calculations', checkAdminAuth, async (c) => {
   
   const result = db.prepare(`
     SELECT * FROM daily_calculations WHERE date = ?
-  `).bind(date).first()
+  `).bind(date).get() as { date: string; calculation_data: string; total_sales: number; expenses: number; profit: number; notes?: string } | undefined
   
   return c.json(result || { date, calculation_data: '{}', total_sales: 0, expenses: 0, profit: 0 })
 })

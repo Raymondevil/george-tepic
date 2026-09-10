@@ -12,7 +12,7 @@ export const checkAdminAuth: MiddlewareHandler<Env> = async (c, next) => {
   const session = db.prepare(`
     SELECT * FROM admin_sessions 
     WHERE session_token = ? AND expires_at > datetime('now')
-  `).bind(sessionToken).first()
+  `).bind(sessionToken).get() as { id: number; session_token: string; expires_at: string; ip_address?: string } | undefined
   
   if (!session) {
     return c.json({ success: false, error: 'Token inválido o expirado' }, 401)

@@ -16,12 +16,12 @@
     "db:console": "sqlite3 database.sqlite"
   },
   "dependencies": {
-    "hono": "^4.9.8",
-    "better-sqlite3": "^11.0.0"
+    "better-sqlite3": "^11.0.0",
+    "hono": "^4.9.8"
   },
   "devDependencies": {
     "@hono/node-server": "^1.13.7",
-    "@hono/vite-build": "^1.2.0",
+    "@hono/vite-build": "^1.11.1",
     "@hono/vite-dev-server": "^0.18.2",
     "@types/better-sqlite3": "^7.6.11",
     "@types/node": "^22.9.0",

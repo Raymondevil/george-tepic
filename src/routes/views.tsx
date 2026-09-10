@@ -1,16 +1,11 @@
 import { Hono } from 'hono'
-import type { CloudflareBindings } from '../types'
 import { Home } from '../views/Home'
 import { Caja } from '../views/Caja'
 import { AdminLogin } from '../views/AdminLogin'
 import { AdminCalculator } from '../views/AdminCalculator'
 import { AdminInventory } from '../views/AdminInventory'
 
-type Env = {
-  Bindings: CloudflareBindings
-}
-
-const viewsRouter = new Hono<Env>()
+const viewsRouter = new Hono()
 
 // Public views
 viewsRouter.get('/', (c) => c.render(<Home />))

@@ -12,8 +12,10 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "declaration": false,
-    "sourceMap": false
+    "sourceMap": false,
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx"
   },
-  "include": ["src/server.ts", "src/routes/**/*", "src/middleware/**/*", "src/utils/**/*", "src/db.ts"],
-  "exclude": ["node_modules", "public", "dist"]
+  "include": ["src/server.ts", "src/routes/api/**/*", "src/middleware/**/*", "src/utils/**/*", "src/db.ts", "src/renderer.tsx"],
+  "exclude": ["node_modules", "public", "dist", "src/views", "src/routes/views.tsx"]
 }

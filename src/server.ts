@@ -8,13 +8,10 @@ import viewsRouter from './routes/views'
 import { db } from './db'
 import type { Env } from './types'
 
-// Tipo de entorno para Node.js
-// Ya no necesitamos Cloudflare bindings, usamos la DB directamente
 const app = new Hono<Env>()
 
 // Middleware para agregar la conexión a BD a cada contexto
 app.use('*', async (c, next) => {
-  // Agregar la base de datos al contexto
   c.set('db', db)
   await next()
 })
@@ -35,7 +32,9 @@ app.route('/', viewsRouter)
 // Iniciar servidor
 export const port = parseInt(process.env.PORT || '3000', 10)
 
-if (import.meta.main) {
+const isMainModule = process.argv[1]?.endsWith("server.ts") || process.argv[1]?.endsWith("dist/server.js")
+
+if (isMainModule) {
   console.log(`🍔 George Burger Server starting...`)
   console.log(`📁 Database path: ${process.env.DB_PATH || 'database.sqlite'}`)
   console.log(`🌐 Server running on http://localhost:${port}`)

@@ -39,15 +39,14 @@ export interface Order {
   total_amount: number;
 }
 
-// Tipo para la base de datos SQLite (usando better-sqlite3)
-// export interface Database {
-//   prepare(sql: string): Statement;
-// }
-
 import type { Database } from 'better-sqlite3'
 
 export type Env = {
   Variables: {
     db: Database
   }
+}
+
+export type CloudflareBindings = {
+  DB: any
 }

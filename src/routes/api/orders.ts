@@ -1,8 +1,8 @@
 import { Hono } from 'hono'
-import type { Order } from '../../types'
+import type { Env, Order } from '../../types'
 import { generateWhatsAppMessage } from '../../utils/whatsapp'
 
-const ordersApi = new Hono()
+const ordersApi = new Hono<Env>()
 
 ordersApi.post('/', async (c) => {
   const db = c.get('db')
